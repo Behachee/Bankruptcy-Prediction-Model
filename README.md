@@ -33,7 +33,34 @@ Average of TPR for all thresholds in range 0.5 to 0.3.
 Out of all this we used the simplest one i.e. finding the best set of hyperparameters for the model that would produce a model with the best AUC for LightGBM. The list of hyperparameters we experimented with include: max_depth, num_leaves, pos_weight_scale, n_estimators, min_child_samples, subsample, reg_alpha, and reg_lambda.
 
 ## Evaluation: How did you evaluate your work? What experiments did you run? Describe clearly your findings.
-To evaluate the models we looked for many different metrics, but the main challenge 
+# Evaluation
+
+To evaluate the model, we compare different metrics with baseline models. The baseline models are simple models trained on the data without any data processing and feature engineering. This provides us with various metrics, such as accuracy, F1-score, and AUC. As mentioned in the methodology, we train Logistic Regression, LightGBM, and Random Forest classification models, yielding the following results:
+
+|                   | Logistic Regression | LightGBM | Random Forest |
+|-------------------|---------------------|----------|---------------|
+| **Accuracy**      | 0.96                | 0.97     | 0.97          |
+| **F1-score**      | 0.00                | 0.34     | 0.23          |
+| **AUC**           | 0.51                | 0.60     | 0.90          |
+
+Although we achieve high accuracy with the baseline models, the F1-score and AUC are suboptimal. The accuracy can be explained by the skewness of the data, prompting the need for data processing and feature engineering. By employing SMOTE and dimensionality reduction, we compare the model’s metrics again. The results after applying these techniques are as follows:
+
+|                   | Logistic Regression | LightGBM | Random Forest |
+|-------------------|---------------------|----------|---------------|
+| **Accuracy**      | 0.80                | 0.95     | 0.95          |
+| **F1-score**      | 0.23                | 0.43     | 0.31          |
+| **AUC**           | 0.89                | 0.90     | 0.90          |
+
+Observing and comparing the metrics, we confirm that LightGBM performs best of all the three models. Now we fine-tune the model to get the best accuracy and find the best threshold for the fine-tuned model. Default scoring for hyperparameter searching will not be sufficient, so we need to experiment with different scoring methods. To find the best hyperparameters for the LightGBM model, AUC seems to be the best scoring method. Using the best values for the hyperparameters, we train the model on the same training data and test the model on the same testing data and get the following result:
+
+|                   | LightGBM           |
+|-------------------|--------------------|
+| **Accuracy**      | 0.96               |
+| **F1-score**      | 0.04               |
+| **AUC**           | 0.92               |
+
+This helps us understand that although the little improvement in accuracy and low value of F1-score do not seem to be a very huge improvement, the goal was to make the model better at predicting more true positives even at the cost of false positives. This is ensured when we see the confusion matrix of the final fine-tuned LightGBM model.
+
 
 ## Conclusion What are the conclusions of your work? Are there any highlights? What are some ideas for future work?
 Although the development of machine learning techniques has made it possible to predict company failures more accurately for all the stakeholders concerned, it should be remembered that expertise - particularly human expertise - is obviously required for a more in-depth analysis that takes into account the results of the prediction in the economic context of the situation. Indeed, the geopolitical, financial, social or environmental context, and more generally the future uncertainty inherent in human decisions, could have a certain influence on the interpretation of the results, which should not be overlooked.
