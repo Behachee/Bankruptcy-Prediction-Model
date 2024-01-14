@@ -49,15 +49,19 @@ Radovanovic, J., & Haas, C. (2023). The evaluation of bankruptcy prediction mode
 ## ANNEX
 
 Annex 1: Learning Curve for baseline model Logistic Regression
+
 <img width="434" alt="Sans titre" src="https://github.com/Behachee/Bankruptcy-Prediction-Model/assets/140748662/27997a5e-57e8-4c23-9340-71f1f6d99fd2">
 
 Annex 2: Learning Curve for baseline model LightGBM
+
 <img width="459" alt="Sans titre2" src="https://github.com/Behachee/Bankruptcy-Prediction-Model/assets/140748662/603a8167-44a3-47f3-bdb3-baa0926fe35f">
 
 Annex 3: Learning Curve for baseline model LightGBM
+
 <img width="468" alt="Sans titre3" src="https://github.com/Behachee/Bankruptcy-Prediction-Model/assets/140748662/54aa6f36-904b-45dc-aa92-a2784e0de926">
 
-Annex 4: 
+Annex 4
+
 <img width="362" alt="Sans titre4" src="https://github.com/Behachee/Bankruptcy-Prediction-Model/assets/140748662/37fd1e4f-23db-4a7a-8ab7-3839fbccd197">
 
 
